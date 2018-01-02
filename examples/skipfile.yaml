@@ -1,0 +1,79 @@
+skiplist:
+  - reason: kernel tests baselining
+    url: https://projects.linaro.org/projects/CTT/queues/issue/CTT-585
+    environments:
+      - production
+      - staging
+    boards:
+      - all
+    branches:
+      - all
+    tests:
+      - test_verifier
+      - test_tag
+      - test_maps
+      - test_lru_map
+      - test_lpm_map
+      - test_progs
+      - test_align
+      - test_kmod.sh
+      - ftracetest
+      - run.sh
+      - run_fuse_test.sh
+      - pstore_tests
+
+  - reason: "LKFT: linux-next: vm compaction_test : ERROR: Less that 1/730 of memory
+             is available"
+    url: https://bugs.linaro.org/show_bug.cgi?id=3145
+    environments:
+      - staging
+    boards: all
+    branches: all
+    tests:
+      - run_vmtests
+
+  - reason: "LKFT: selftests: seccomp TRACE_syscall.skip_after_RET_TRACE"
+    url: https://bugs.linaro.org/show_bug.cgi?id=2980
+    environments: all
+    boards: all
+    branches: all
+    tests:
+      - seccomp_bpf
+
+  - reason: "LKFT: linux-next: kselftest: breakpoint_test_arm64 build failed"
+    url: https://bugs.linaro.org/show_bug.cgi?id=3208
+    environments: production
+    boards:
+      - hi6220
+      - hikey
+      - juno
+      - x15
+    branches: all
+    tests:
+      - breakpoint_test_arm64
+
+  - reason: "LKFT: linux-mainline: kselftest sync_test failed"
+    url: https://bugs.linaro.org/show_bug.cgi?id=3504
+    environments: production
+    boards: all
+    branches: all
+    tests:
+      - sync_test
+
+  - reason: "LKFT: linux-mainline: x86, x15, juno-r2: kselftest
+             fw_filesystem.sh failed"
+    url: https://bugs.linaro.org/show_bug.cgi?id=3503
+    environments: production
+    boards: all
+    branches: all
+    tests:
+      - fw_filesystem.sh
+
+  - reason: "LKFT: linux-mainline: kselftest BPF test_dev_cgroup failed (new test case)
+             on all devices"
+    url: https://bugs.linaro.org/show_bug.cgi?id=3500
+    environments: production
+    boards: all
+    branches: all
+    tests:
+      - test_dev_cgroup
