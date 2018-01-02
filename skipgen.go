@@ -88,28 +88,34 @@ func getSkipfileContents(board string, branch string, environment string, skips 
 	return buf
 }
 
+func usage() {
+	fmt.Fprintf(os.Stderr, "Usage:\n    %s <skipfile.yaml> [--board <boardname>] [--branch <branchname>] [--environment <environmentname]\n", os.Args[0])
+	os.Exit(1)
+}
+
 func main() {
 
 	boardPtr := flag.String("board", "all", "(Optional) board name. If not specified, skips that apply to all boards will be returned.")
 	branchPtr := flag.String("branch", "all", "(Optional) branch name. If not specified, skips that apply to all branches will be returned.")
 	environmentPtr := flag.String("environment", "all", "(Optional) environment name. If not specified, skips that apply to all environments will be returned.")
-	skipfilePtr := flag.String("skipfile", "", "Required. Skipfile in yaml format.")
 	flag.Parse()
 
-	if len(*skipfilePtr) < 1 {
-		fmt.Fprintf(os.Stderr, "Error: -skipfile not provided\n")
-		os.Exit(1)
+	if len(flag.Args()) < 1 {
+		fmt.Fprintf(os.Stderr, "Error: skipfile not provided\n\n")
+		usage()
 	}
 
-	_, err := os.Stat(*skipfilePtr)
+	skipfile := flag.Arg(0)
+
+	_, err := os.Stat(skipfile)
 	if os.IsNotExist(err) {
-		fmt.Fprintf(os.Stderr, "Error: skipfile '%s' not found\n", *skipfilePtr)
-		os.Exit(1)
+		fmt.Fprintf(os.Stderr, "Error: skipfile '%s' not found\n\n", skipfile)
+		usage()
 	}
 	check(err)
 
 	// Read skipfile.yaml
-	buf, err := ioutil.ReadFile(*skipfilePtr)
+	buf, err := ioutil.ReadFile(skipfile)
 	check(err)
 
 	// Parse skipfile
