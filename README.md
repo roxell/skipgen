@@ -1,9 +1,9 @@
-= Overview =
+# Overview
 
 skipgen is a program that will generate a skiplist given a yaml file and
 optionally a board name, branch name, and enviornment name.
 
-== Usage ==
+## Usage
 
     $ skipgen -skipfile examples/skipfile.yaml 
     seccomp_bpf
@@ -17,11 +17,11 @@ optionally a board name, branch name, and enviornment name.
     test_align
     ...
 
-== Skipfile Format ==
+## Skipfile Format
 
 See examples/skipfile.yaml.
 
-== Building ==
+## Building
 
 1. Install golang. i.e. on debian-based systems, run `apt-get install golang`.
 2. Set GOPATH. See https://github.com/golang/go/wiki/SettingGOPATH.
@@ -29,13 +29,13 @@ See examples/skipfile.yaml.
 4. go build
 5. ./skipgen
 
-== Development ==
+## Development
 
 `$ go run skipgen.go`
 `$ go run skipgen.go -skipfile examples/skipfile.yaml`
 `$ go run skipgen.go -skipfile examples/skipfile.yaml -board x15 -environment production`
 
-== Testing ==
+## Testing
 
 `make test`
 
