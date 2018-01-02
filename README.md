@@ -27,15 +27,21 @@ See examples/skipfile.yaml.
 2. Set GOPATH. See https://github.com/golang/go/wiki/SettingGOPATH.
 3. Install go dependencies. `go get ./...`
 4. go build
-5. ./skipgen
+5. `./skipgen`
 
 ## Development
 
+Print usage:
 `$ go run skipgen.go`
+
+Get default skiplist:
 `$ go run skipgen.go -skipfile examples/skipfile.yaml`
+
+Get board and environment-specific skiplist:
 `$ go run skipgen.go -skipfile examples/skipfile.yaml -board x15 -environment production`
 
 ## Testing
 
-`make test`
-
+skipgen includes unit tests that can be run using `go test`. The `make test`
+target will also run 'go vet' and 'golint'. golint may need to be installed
+(`go get -u github.com/golang/lint/golint`)
