@@ -95,13 +95,27 @@ func usage() {
 
 func main() {
 
-	boardPtr := flag.String("board", "all", "(Optional) board name. If not specified, skips that apply to all boards will be returned.")
-	branchPtr := flag.String("branch", "all", "(Optional) branch name. If not specified, skips that apply to all branches will be returned.")
-	environmentPtr := flag.String("environment", "all", "(Optional) environment name. If not specified, skips that apply to all environments will be returned.")
+	// This variable is overwritten during build by goreleaser
+	var version = "master"
+
+	boardPtr := flag.String("board", "all", "Board name. If not specified, skips that apply to all boards will be returned.")
+	branchPtr := flag.String("branch", "all", "Branch name. If not specified, skips that apply to all branches will be returned.")
+	environmentPtr := flag.String("environment", "all", "Environment name. If not specified, skips that apply to all environments will be returned.")
+	versionPtr := flag.Bool("version", false, "Print skipgen version and exit.")
 	flag.Parse()
+
+	if (*versionPtr) {
+		fmt.Fprintf(os.Stderr, "skipgen %s\n", version)
+		os.Exit(1)
+	}
 
 	if len(flag.Args()) < 1 {
 		fmt.Fprintf(os.Stderr, "Error: skipfile not provided\n\n")
+		usage()
+	}
+	if len(flag.Args()) > 1 {
+		fmt.Fprintf(os.Stderr, "Error: unprocessed argument: '%s'\n", flag.Arg(1))
+		fmt.Fprintf(os.Stderr, "Put the path to skipfile last on the command line.\n\n")
 		usage()
 	}
 
