@@ -1,7 +1,7 @@
 # Overview
 
 skipgen is a program that will generate a skiplist given a yaml file and
-optionally a board name, branch name, and enviornment name.
+optionally a board name, branch name, and environment name.
 
 ## Usage
 
