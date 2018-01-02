@@ -5,9 +5,13 @@ optionally a board name, branch name, and enviornment name.
 
 ## Usage
 
-    $ skipgen -skipfile examples/skipfile.yaml 
+    skipgen <skipfile.yaml> [--board <boardname>] [--branch <branchname>] [--environment <environmentname]
+
+## Example Usage
+
+    $ skipgen examples/skipfile.yaml
     seccomp_bpf
-    $ skipgen -skipfile examples/skipfile.yaml -board x15 -environment production
+    $ skipgen examples/skipfile.yaml --board x15 --environment production --branch=4.4
     test_verifier
     test_tag
     test_maps
@@ -35,10 +39,10 @@ Print usage:
 `$ go run skipgen.go`
 
 Get default skiplist:
-`$ go run skipgen.go -skipfile examples/skipfile.yaml`
+`$ go run skipgen.go examples/skipfile.yaml`
 
 Get board and environment-specific skiplist:
-`$ go run skipgen.go -skipfile examples/skipfile.yaml -board x15 -environment production`
+`$ go run skipgen.go examples/skipfile.yaml --board x15 --environment production`
 
 ## Testing
 
