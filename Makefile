@@ -1,5 +1,7 @@
 FILE=skipgen
 
+LDFLAGS="-s -w"
+
 all: help
 
 help:
@@ -10,7 +12,7 @@ help:
 	@echo "     clean"
 
 $(FILE): test
-	go build
+	go build -ldflags=$(LDFLAGS)
 
 test:
 	go test -v -cover
