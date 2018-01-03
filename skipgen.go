@@ -106,7 +106,7 @@ func main() {
 
 	if (*versionPtr) {
 		fmt.Fprintf(os.Stderr, "skipgen %s\n", version)
-		os.Exit(1)
+		os.Exit(0)
 	}
 
 	if len(flag.Args()) < 1 {
