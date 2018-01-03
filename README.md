@@ -37,7 +37,7 @@ See [examples/skipfile.yaml](examples/skipfile.yaml).
 
 1. Install golang. i.e. on debian-based systems, run `apt-get install golang`.
 2. Set GOPATH. See https://github.com/golang/go/wiki/SettingGOPATH.
-3. Install go dependencies. `go get ./...`
+3. Install go dependencies. `go get -t ./...`
 4. go build
 5. `./skipgen`
 
