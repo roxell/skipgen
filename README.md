@@ -40,7 +40,7 @@ See [examples/skipfile.yaml](examples/skipfile.yaml).
 3. Install go dependencies. `go get -t ./...`
 4. install golint. `go get -u github.com/golang/lint/golint`
    Don't forget to setup the path PATH="$GOPATH/bin:$PATH"
-5. go build
+5. make skipgen
 6. `./skipgen`
 
 ## Development
