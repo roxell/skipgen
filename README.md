@@ -5,6 +5,12 @@ optionally a board name, branch name, and environment name.
 
 [![Build Status](https://travis-ci.org/Linaro/skipgen.svg?branch=master)](https://travis-ci.org/Linaro/skipgen)
 
+## Download and Install
+
+Download release for your OS and architecture at
+https://github.com/Linaro/skipgen/releases. Extract and run the 'skipfile'
+binary.
+
 ## Usage
 
     skipgen [--board <boardname>] [--branch <branchname>] [--environment <environmentname] [--version] <skipfile.yaml>
@@ -25,7 +31,7 @@ optionally a board name, branch name, and environment name.
 
 ## Skipfile Format
 
-See examples/skipfile.yaml.
+See [examples/skipfile.yaml](examples/skipfile.yaml).
 
 ## Building
 
